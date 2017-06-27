@@ -1,0 +1,115 @@
+*
+{
+margin:0px;
+}
+
+.li2{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:1000px;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width:1000px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:110px;
+}
+
+li a:hover:not(.active) {
+    background-color: #D2691E;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.heading
+{
+ color:yellow;
+ background-color:#D2691E;
+ text-align:center;
+ font-family:verdana;
+ height:90px;
+ background-image:url("hadoop.jpg");
+ background-size:120px;
+ background-repeat: no-repeat;
+ padding-left: 40px;
+}
+
+.table
+{
+ color:black;
+ text-align:center;
+}
+
+.fieldset
+{
+ background-color:lightblue;
+ height:500px;
+}
+
+.form
+{
+ color:brown;
+ text-align:center;
+ background-image:url("background.jpg"); 
+ font-family:courier
+ height:400px;
+ color:white;
+ background-size:800px;
+}
+
+.tabledata{
+ text-align: left;
+ padding: 50px;
+ color:white;
+}
+
+
+#submit
+{
+ text-align:center;
+ padding:50px;
+}
+
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: white;
+    color: blue;
+}
+
+input[type=password] {
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: white;
+    color: blue;
+}
+input[type=submit] {
+    background-color: white;
+    color: blue;
+    margin-left:530px
+}
+
+

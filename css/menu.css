@@ -1,0 +1,93 @@
+*
+{
+margin:0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width:1000px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:1000px;
+}
+.li2{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:1000px;
+
+}
+.ul1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image:url("menu3.svg");
+    background-size:1500px;
+    background-repeat: no-repeat;
+    height:800px;
+    width:1500px;
+}
+
+.li1 {
+    float: left;
+}
+
+
+
+.liform1 {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:300px;
+    
+}
+
+li a:hover:not(.active) {
+    background-color: #FFFFFF;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.heading
+{
+ color:yellow;
+ background-color:#D2691E;
+ text-align:center;
+ font-family:verdana;
+ height:90px;
+ background-image:url("hadoop.jpg");
+ background-size:120px;
+ background-repeat: no-repeat;
+ padding-left: 40px;
+}
+
+
+input[type=submit] {
+    text-align:center;
+    width:250px;
+    height:250px;
+    background-image: url("options.jpg");
+    background-size:240px;
+    background-repeat: no-repeat;
+}
