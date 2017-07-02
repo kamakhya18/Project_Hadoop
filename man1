@@ -24,27 +24,6 @@ namenode_directory = data.getvalue('namenode_directory')
 if not namenode_directory:
  namenode_directory="hadoopnamenode"
 
-if not ip_namenode:
- ip_namenode = "192.168.122.1"
-
-inventory=open('/tmp/inventory','r+')
-
-temp_in = inventory.read()
-
-inventory.close()
-
-temp_in = temp_in.replace(ip_namenode+"\n","\n")
-
-inventory=open('/tmp/inventory','w+')
-
-inventory.write("[namenode]\n"+ip_namenode+"\n\n[datanode]\n")
-
-inventory.write(temp_in)
-
-inventory.seek(0)
-
-inventory.close()
-
 #core-site.xml
 f=open("/tmp/core-site.xml","w+")
 
@@ -68,7 +47,7 @@ f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\
 
 f.close()
 
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
+os.system("sudo ansible-playbook /root/Desktop/namenode.yml")
 
 #hdfs-site.xml
 f=open("/tmp/hdfs-site.xml","w")
@@ -77,8 +56,4 @@ f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"tex
 
 f.close()
 
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
-
-print "HDFS Cluster setup successful"
-
-print "<META HTTP-EQUIV='refresh' content='0; url=dfsadmin_report'/>"
+os.system("sudo ansible-playbook /root/Desktop/datanode.yml")

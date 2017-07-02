@@ -15,14 +15,12 @@ data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
 
 data_uri2 = open('refresh.jpg', 'rb').read().encode('base64').replace('\n', '')
 
-print '<div style="background-color:#FFDAB9; background-size:4100px;background-repeat: no-repeat; width:2000px; height:2500px;">'
+print '<div style="background-color:#FFDAB9; background-size:4100px;background-repeat:repeat; width:2000px;">'
 
 
-print "<h1 style='margin:0px; color:yellow;background-color:#D2691E; text-align:center; font-family:verdana; height:90px; width:1500px; background-image:url(data:image/jpg;base64,%s);background-size:120px;background-repeat: no-repeat;padding-left: 40px;' title='Hadoop'> " % data_uri 
+print "<h1 style='margin:0px; color:yellow;background-color:#D2691E; text-align:center; font-family:verdana; height:50px; width:2000px; background-image:url(data:image/jpg;base64,%s);background-size:170px;background-repeat: no-repeat; postion:fixed; padding:40px 40px;' title='Hadoop'> " % data_uri 
 print "Hadoop"
 print "</h1>"
-
-#print '<div style="background-image:url(data:image/jpg;base64,%s);background-size:1550px;background-repeat: no-repeat; width:2000px; height:800px;">' % data_uri1
 
 
 print "<ul>"
@@ -31,8 +29,10 @@ print "</ul>"
 
 cluster_details=commands.getoutput("sudo hadoop dfsadmin -report")
 print "<pre>"
-print "<font style='color:#D2691E;' size='6'>"
+print "<font style='color:#D2691E;' size='4'>"
+print "<i>"
 print cluster_details
+print "</i>"
 print "</font>"
 print "</pre>"
 
@@ -40,6 +40,8 @@ print "<br>"
 print "<a href='dfsadmin_report'>"
 print "<img src='data:image/jpg;base64,%s' style='width:100px; height:100px; margin-left:560px;'>" % data_uri2
 print "</a>"
+print "<br>"
+print "<br>"
 print "</div>"
 
 

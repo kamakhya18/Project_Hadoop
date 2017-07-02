@@ -1,0 +1,19 @@
+---
+ - hosts: all
+   tasks: 
+    - name: Stop datanodes
+      command: hadoop-daemon.sh stop datanode
+      ignore_errors: yes
+
+    - name: Stop namenode
+      command: hadoop-daemon.sh stop namenode
+      ignore_errors: yes
+
+    - name: Stop jobtracker 
+      command: hadoop-daemon.sh stop jobtracker
+      ignore_errors: yes
+
+    - name: Stop tasktracker
+      command: hadoop-daemon.sh stop tasktracker
+      ignore_errors: yes
+

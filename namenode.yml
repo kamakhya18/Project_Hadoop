@@ -1,0 +1,56 @@
+---
+ - hosts: namenode
+   tasks: 
+    - name: Install jdk
+      yum: name=jdk state=present
+      ignore_errors: yes
+
+    - name: Java path set
+      shell: JAVA_HOME=/usr/java/jdk1.7.0_79
+      ignore_errors: yes
+
+    - name: Java path store in /root/.bashrc file
+      copy: src=/tmp/.bashrc dest=/root/.bashrc
+      ignore_errors: yes
+
+    - name: Install hadoop
+      shell: rpm -ivh http://192.168.122.1/repo/rhel7rpm/hadoop-1.2.1-1.x86_64.rpm --replacefiles
+      ignore_errors: yes
+
+    - name: Copy core-site.xml
+      copy: src=/tmp/core-site.xml dest=/etc/hadoop/core-site.xml
+      ignore_errors: yes
+
+    - name: Copy hdfs-site.xml
+      copy: src=/tmp/hdfs-site.xml dest=/etc/hadoop/hdfs-site.xml
+      ignore_errors: yes
+
+    - name: Stop firewalld
+      service: name=firewalld state=stopped
+      ignore_errors: yes
+
+    - name: Selinux disable
+      command: setenforce 0
+      ignore_errors: yes
+
+    - name: Stop namenode if already running
+      command: hadoop-daemon.sh stop namenode
+      ignore_errors: yes
+
+    - name: Stop datanode if running
+      command: hadoop-daemon.sh stop datanode
+      ignore_errors: yes
+
+    - name: Remove directory 
+      shell: rm -rf /hadoopnamenode
+      ignore_errors: yes
+
+    - name: Format namenode
+      command: hadoop namenode -format
+      ignore_errors: yes
+
+    - name: Start namenode
+      command: hadoop-daemon.sh start namenode
+      ignore_errors: yes
+
+
