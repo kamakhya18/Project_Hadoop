@@ -24,9 +24,6 @@ namenode_directory = data.getvalue('namenode_directory')
 if not namenode_directory:
  namenode_directory="hadoopnamenode"
 
-if not ip_namenode:
- ip_namenode = "192.168.122.1"
-
 inventory=open('/tmp/inventory','r+')
 
 temp_in = inventory.read()
@@ -64,11 +61,15 @@ f.close()
 #.bashrc
 f=open("/tmp/.bashrc","w+")
 
-f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\nalias cp='cp -i'\nalias mv='mv -i'\n\n# Source global definitions\nif [ -f /etc/bashrc ]; then\n\t. /etc/bashrc\nfi\n\nJAVA_HOME=/usr/java/jdk1.7.0_79\nPATH=$JAVA_HOME/bin:$PATH\nexport PATH\n\n")
+f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\nalias cp='cp -i'\nalias mv='mv -i'\n\n# Source global definitions\nif [ -f /etc/bashrc ]; then\n\t. /etc/bashrc\nfi\n\nJAVA_HOME=/usr/java/jdk1.7.0_79\nHIVE_PREFIX=/hive\nPATH=$JAVA_HOME/bin:$HIVE_PREFIX/bin:$PATH\nexport PATH\n\n")
 
 f.close()
 
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
+commands.getoutput("sudo ansible-playbook -i /tmp/inventory all.yml")
+
+print "<pre>"
+print commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
+print "</pre>"
 
 #hdfs-site.xml
 f=open("/tmp/hdfs-site.xml","w")
@@ -77,7 +78,9 @@ f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"tex
 
 f.close()
 
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
+print "<pre>"
+print commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
+print "</pre>"
 
 print "HDFS Cluster setup successful"
 

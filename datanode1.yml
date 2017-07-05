@@ -1,0 +1,6 @@
+---
+ - hosts: datanode
+   tasks: 
+    - name: Start datanode
+      command: hadoop-daemon.sh start datanode
+      ignore_errors: yes

@@ -3,23 +3,12 @@
 margin:0px;
 }
 
-.li2{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    width:1000px;
-
-}
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    width:1000px;
 }
 
 li {
@@ -32,28 +21,42 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    width:110px;
 }
 
-li a:hover:not(.active) {
+li a:hover {
     background-color: #D2691E;
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #D2691E;
 }
 
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
 .heading
 {
  color:yellow;
  background-color:#D2691E;
  text-align:center;
  font-family:verdana;
- height:90px;
+ height:50px;
  background-image:url("hadoop.jpg");
- background-size:120px;
+ background-size:170px;
  background-repeat: no-repeat;
- padding-left: 40px;
+ padding: 40px 40px;
+ position: relative;
+ -webkit-animation: mymove 5s infinite;
+ animation: mymove 5s infinite;
+ animation-iteration-count: 1;
 }
 
 .table
@@ -65,18 +68,22 @@ li a:hover:not(.active) {
 .fieldset
 {
  background-color:lightblue;
- height:500px;
+ height:100%;
+ color:brown;
+ text-align:center;
+ background-image:url("background.jpg"); 
+ font-family:courier
+ color:white;
+ background-size:1000px;
 }
 
 .form
 {
  color:brown;
  text-align:center;
- background-image:url("background.jpg"); 
  font-family:courier
- height:400px;
+ height:1400px;
  color:white;
- background-size:800px;
 }
 
 .tabledata{
@@ -98,6 +105,10 @@ input[type=text] {
     border-bottom: 2px solid white;
     background-color: white;
     color: blue;
+    background-image:url("uname.jpg");
+    background-size:45px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
 }
 
 input[type=password] {
@@ -105,11 +116,58 @@ input[type=password] {
     border-bottom: 2px solid white;
     background-color: white;
     color: blue;
+    background-image:url("pwd.png");
+    background-size:45px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+}
+input[type=text]:hover {
+    border: none;
+    width:550px;
+    height:80px;
+    border-bottom: 2px solid white;
+    background-color: white;
+    color: blue;
+    background-image:url("uname.jpg");
+    background-size:75px;
+    background-repeat: no-repeat;
+    padding-left: 80px;
+}
+
+input[type=password]:hover{
+    border: none;
+    width:550px;
+    height:80px;
+    border-bottom: 2px solid white;
+    background-color: white;
+    color: blue;
+    background-image:url("pwd.png");
+    background-size:75px;
+    background-repeat: no-repeat;
+    padding-left: 80px;
 }
 input[type=submit] {
     background-color: white;
     color: blue;
-    margin-left:530px
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    margin-left: 30px;
 }
 
+input[type=submit]:hover {
+    background-color: white;
+    color: blue;
+    width: 600px;
+    height: 70px;
+    margin-left:-200px;
+}
 
+div {
+    width: 600px;
+    border:10px solid white;
+    background-color:steelblue;
+    padding: 25px;
+    margin-left:700px;
+    text-align:center;
+}

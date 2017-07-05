@@ -1,0 +1,11 @@
+---
+ - hosts: namenode
+   tasks: 
+    - name: Format Namenode
+      command: hadoop namenode -format
+      ignore_errors: yes
+
+    - name: Start Namenode
+      command: hadoop-daemon.sh start namenode
+      ignore_errors: yes
+

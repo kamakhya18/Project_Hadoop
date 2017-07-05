@@ -1,0 +1,62 @@
+*
+{
+margin:0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #D2691E;
+}
+
+.active {
+    background-color: #D2691E;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+.heading
+{
+ color:yellow;
+ background-color:#D2691E;
+ text-align:center;
+ font-family:verdana;
+ height:50px;
+ background-image:url("hadoop.jpg");
+ background-size:170px;
+ background-repeat: no-repeat;
+ padding: 40px 40px;
+ position: relative;
+ -webkit-animation: mymove 5s infinite;
+ animation: mymove 5s infinite;
+ animation-iteration-count: 1;
+}
+
+

@@ -27,6 +27,8 @@ print "</ul>"
 ip_details=[]
 commands.getoutput("sudo arp-scan -I virbr0 192.168.122.0/24 | grep 192 | awk '{print $1}' > /tmp/ip_list")
 
+commands.getoutput("sudo echo '192.168.122.1\n'>> /tmp/ip_list")
+
 commands.getoutput("sudo cp /tmp/ip_list /tmp/inventory")
 
 commands.getoutput("sudo chmod 777 /tmp/inventory")
@@ -38,7 +40,6 @@ ip_list=ip_list_file.read()
 ip_list=ip_list.split();
 
 if len(ip_list)>0:
- #ip_list.append("192.168.122.1")
  print "<br>"
  print "<br>"
  print "<font size='6' style='margin:0px; display: block; color: white;margin-left:700px;padding: 14px 16px;text-decoration: none; width:1500px;'><i>Scanned IPs</i></font>"

@@ -23,7 +23,6 @@ data=cgi.FieldStorage()
 ip_list_file=open('/tmp/ip_list','r')
 ip_list=ip_list_file.read()
 ip_list=ip_list.split();
-#ip_list.append("192.168.122.1")
 
 ip_details=[]
 
@@ -95,7 +94,7 @@ f.close()
 #.bashrc
 f=open("/tmp/.bashrc","w+")
 
-f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\nalias cp='cp -i'\nalias mv='mv -i'\n\n# Source global definitions\nif [ -f /etc/bashrc ]; then\n\t. /etc/bashrc\nfi\n\nJAVA_HOME=/usr/java/jdk1.7.0_79\nPATH=$JAVA_HOME/bin:$PATH\nexport PATH\n\n")
+f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\nalias cp='cp -i'\nalias mv='mv -i'\n\n# Source global definitions\nif [ -f /etc/bashrc ]; then\n\t. /etc/bashrc\nfi\n\nJAVA_HOME=/usr/java/jdk1.7.0_79\nHIVE_PREFIX=/hive\nPATH=$JAVA_HOME/bin:$HIVE_PREFIX/bin:$PATH\nexport PATH\n\n")
 
 f.close()
 

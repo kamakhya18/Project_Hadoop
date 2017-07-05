@@ -37,14 +37,6 @@
       shell: rm -rf /hadoopdatanode
       ignore_errors: yes
 
-    - name: Stop namenode if already running
-      command: hadoop-daemon.sh stop namenode
-      ignore_errors: yes
-
-    - name: Stop datanode if already running
-      command: hadoop-daemon.sh stop datanode
-      ignore_errors: yes
-
     - name: Start datanode
       command: hadoop-daemon.sh start datanode
       ignore_errors: yes

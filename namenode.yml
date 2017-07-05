@@ -33,23 +33,15 @@
       command: setenforce 0
       ignore_errors: yes
 
-    - name: Stop namenode if already running
-      command: hadoop-daemon.sh stop namenode
-      ignore_errors: yes
-
-    - name: Stop datanode if running
-      command: hadoop-daemon.sh stop datanode
-      ignore_errors: yes
-
     - name: Remove directory 
       shell: rm -rf /hadoopnamenode
       ignore_errors: yes
 
-    - name: Format namenode
+    - name: Format Namenode
       command: hadoop namenode -format
       ignore_errors: yes
 
-    - name: Start namenode
+    - name: Start Namenode
       command: hadoop-daemon.sh start namenode
       ignore_errors: yes
 
