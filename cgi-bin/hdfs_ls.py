@@ -7,13 +7,16 @@ print ""
 
 data = cgi.FieldStorage()
 
-directory_name=data.getvalue("directory_name")
+path=data.getvalue("path")
+
+ip_namenode = data.getvalue("ip_namenode")
+
 
 print "<pre>"
-x = commands.getoutput("sudo hadoop fs -mkdir "+directory_name)
+output = commands.getoutput("sudo hadoop fs -ls "+path)
 
-if not x:
- print "Successfully created directory"
+if not output:
+ print "Empty"
 else:
- print x
+ print output
 print "</pre>"
