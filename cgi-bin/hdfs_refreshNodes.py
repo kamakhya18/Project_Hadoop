@@ -7,15 +7,14 @@ print ""
 
 data = cgi.FieldStorage()
 
-file_src=data.getvalue("file_src")
+ip_namenode = data.getvalue("ip_namenode")
 
-file_dest=data.getvalue("file_dest")
 
 print "<pre>"
-output = commands.getoutput("sudo hadoop fs -mv "+file_src+" "+file_dest)
+output = commands.getoutput("sudo hadoop dfsadmin -refreshNodes ")
 
 if not output:
- print "Successfully created directory"
+ print commands.getoutput("sudo hadoop dfsadmin -report")
 else:
  print output
 print "</pre>"

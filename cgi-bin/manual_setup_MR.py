@@ -1,9 +1,16 @@
 #!/usr/bin/python
 
-import os,time,string,sys,commands,getpass
+import os,time,string,sys,commands,getpass,cgi
 
 print "Content-type:text/html"
 print ""
+
+data = cgi.FieldStorage()
+
+ip_namenode = data.getvalue('ip_namenode')
+
+if not ip_namenode:
+ ip_namenode = "192.168.122.61"
 
 data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
 #img_tag = '<img src="data:image/jpg;base64,%s">' % data_uri
@@ -23,15 +30,13 @@ print "Hadoop"
 print "</h1>"
 
 print "<ul>"
-print "<li style='margin:0px; display: block; color: white;text-align: center;padding: 14px 16px;text-decoration: none; width:1000px;  postion:fixed; background-color:royalblue;'>Manual Setup of HDFS Cluster</li>"
+print "<li style='margin:0px; display: block; color: white;text-align: center;padding: 14px 16px;text-decoration: none; width:1000px;  postion:fixed; background-color:royalblue;'>Manual Setup of MR Cluster</li>"
 print "</ul>"
 
 ip_details=[]
-commands.getoutput("sudo arp-scan -I virbr0 192.168.122.0/24 | grep 192 | grep -Ev '192.168.122.93' | awk '{print $1}' > /tmp/ip_list")
+commands.getoutput("sudo arp-scan -I virbr0 192.168.122.0/24 | grep 192 | awk '{print $1}' > /tmp/ip_list")
 
-commands.getoutput("sudo echo '192.168.122.1\n'>> /tmp/ip_list")
-
-#commands.getoutput("sudo arp-scan -I docker0 172.17.0.0/24 | grep 172 | grep -Ev '172.17.0.5' | awk '{print $1}' > /tmp/ip_list")
+#commands.getoutput("sudo echo '192.168.122.1\n'>> /tmp/ip_list")
 
 commands.getoutput("sudo cp /tmp/ip_list /tmp/inventory")
 
@@ -46,9 +51,8 @@ ip_list=ip_list.split();
 if len(ip_list)>0:
  print "<br>"
  print "<br>"
- print "<font size='6' style='margin:0px; display: block; color: white;margin-left:700px;padding: 14px 16px;text-decoration: none; width:1500px;'><i>Select namenode</i></font>"
  
- print "<form action='manual_setup_start.py' method='POST'>"
+ print "<form action='manual_setup_start_MR.py' method='POST'>"
  
  for temp in ip_list:
   
@@ -64,21 +68,20 @@ if len(ip_list)>0:
   
   ip_details.append((temp,cpu_core[1].strip(),os_ram))
  
+ print "<font size='6' style='margin:0px; display: block; color: white;margin-left:700px;padding: 14px 16px;text-decoration: none; width:1500px;'><i>Select jobtracker</i></font>"
+ 
  print "<pre>"
  print "<font style='color:white;' size='5'>"
  print "<i>"
  print "\t\tIP\t\t\tCPU\t\t\tRAM"
  print "<br>"
  for i in ip_details:
-  print "\t<input type='radio' name='namenode' checked='checked' value="+i[0]+">"+i[0] + "\t\t\t" + i[1] + "\t\t\t"+ i[2]
+  print "\t<input type='radio' name='jobtracker' checked='checked' value="+i[0]+">"+i[0] + "\t\t\t" + i[1] + "\t\t\t"+ i[2]
  print "</i>"
  print "</font>"
  print "</pre>"
-
- print "<br>"
  
- print "<input type='text' placeholder='Enter directory name' name='namenode_directory' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px;background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 20px;'>" %data_uri3
- 
+ print "<input type='hidden' name='namenode' value="+ip_namenode+">"
  print "<br>"
  print "<br>"
  print "<br>"
@@ -104,7 +107,7 @@ else:
  print "<br>"
  print "<br>"
  print "<br>"
-print "<a href='manual_setup.py'>"
+print "<a href='manual_setup_MR.py'>"
 print "<img src='data:image/jpg;base64,%s' style='width:100px; height:100px; margin-left: 1000px;'>" % data_uri2
 print "</a>"
 print "</div>"

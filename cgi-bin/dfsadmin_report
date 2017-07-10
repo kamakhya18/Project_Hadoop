@@ -9,6 +9,9 @@ data=cgi.FieldStorage()
 
 ip_namenode=data.getvalue('ip_namenode')
 
+if not ip_namenode:
+ ip_namenode="192.168.122.61"
+
 data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
 #img_tag = '<img src="data:image/jpg;base64,%s">' % data_uri
 
@@ -29,7 +32,7 @@ print "<ul>"
 print "<li style='margin:0px; display: block; color: white;text-align: center;padding: 14px 16px;text-decoration: none; width:1000px; background-color:#6495ED;'>Status of HDFS Cluster</li>"
 print "</ul>"
 
-cluster_details=commands.getoutput("sudo hadoop dfsadmin -report")
+cluster_details=commands.getoutput("sudo sshpass -p 'redhat' ssh -o 'StrictHostKeyChecking no' root@"+ip_namenode+" hadoop dfsadmin -report")
 print "<pre>"
 print "<font style='color:#D2691E;' size='4'>"
 print "<i>"
@@ -44,9 +47,10 @@ print "<img src='data:image/jpg;base64,%s' style='width:100px; height:100px; mar
 print "</a>"
 print "<br>"
 print "<br>"
-print "<a href='../hdfs_options1.html' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
-print "Continue"
-print "</a>"
+print "<form action='../cgi-bin/hdfs_options1.py' method='GET'>"
+print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+print "<input type='submit' value='Continue'>"
+print "</form>"
 
 print "</br>"
 print "</br>"

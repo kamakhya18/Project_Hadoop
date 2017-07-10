@@ -2,7 +2,7 @@
  - hosts: jobtracker
    tasks: 
     - name: Copy mapred-site.xml
-      copy: src=/tmp/mapred-site.xml dest=/etc/hadoop/mapred-site.xml
+      copy: src=/etc/hadoop/mapred-site.xml dest=/etc/hadoop/mapred-site.xml
 
     - name: start jobtracker
       command: hadoop-daemon.sh start jobtracker

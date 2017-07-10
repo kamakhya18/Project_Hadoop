@@ -50,45 +50,11 @@ inventory.write(temp)
 
 inventory.close()
 
-#core-site.xml
-f=open("/tmp/core-site.xml","w+")
-
-f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n\n\n\n<configuration>\n<property>\n<name>fs.default.name</name>\n<value>hdfs://"+ip_namenode+":10002</value>\n</property>\n</configuration>\n")
-
-f.close()
-
-
-#Namenode hdfs-site.xml
-f=open("/tmp/hdfs-site.xml","w+")
-
-f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n\n\n\n<configuration>\n<property>\n<name>dfs.name.dir</name>\n<value>/"+namenode_directory+"</value>\n</property>\n</configuration>\n")
-
-f.close()
-
-
-#.bashrc
-f=open("/tmp/.bashrc","w+")
-
-f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\nalias cp='cp -i'\nalias mv='mv -i'\n\n# Source global definitions\nif [ -f /etc/bashrc ]; then\n\t. /etc/bashrc\nfi\n\nJAVA_HOME=/usr/java/jdk1.7.0_79\nHIVE_PREFIX=/hive\nPATH=$JAVA_HOME/bin:$HIVE_PREFIX/bin:$PATH\nexport PATH\n\n")
-
-f.close()
-
 commands.getoutput("sudo ansible-playbook -i /tmp/inventory all_mr.yml")
-
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode_mr.yml")
-
-#hdfs-site.xml
-f=open("/tmp/hdfs-site.xml","w")
-
-f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n\n\n\n<configuration>\n<property>\n<name>dfs.data.dir</name>\n<value>/hadoopdatanode</value>\n</property>\n</configuration>\n")
-
-f.close()
-
-commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode_mr.yml")
 
 
 #mapred-site.xml
-f=open("/tmp/mapred-site.xml","w+")
+f=open("/etc/hadoop/mapred-site.xml","w+")
 
 f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n\n\n\n<configuration>\n<property>\n<name>mapred.job.tracker</name>\n<value>"+ip_jobtracker+":9001</value>\n</property>\n</configuration>\n")
 
@@ -100,4 +66,10 @@ commands.getoutput("sudo ansible-playbook -i /tmp/inventory tasktracker_mr.yml")
 
 print "Map Reduce Cluster setup successful"
 
-print "<META HTTP-EQUIV='refresh' content='0; url=dfsadmin_report'/>"
+#print "<META HTTP-EQUIV='refresh' content='1; url=mr_options1.py'/>"
+
+print "<form action='../cgi-bin/mr_options1.py' method='POST'>"
+print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+print "<input type='submit' value='Continue'>"
+print "</form>"
+#print "<META HTTP-EQUIV='refresh' content='0; url=dfsadmin_report'/>"
