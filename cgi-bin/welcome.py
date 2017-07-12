@@ -27,7 +27,7 @@ user_pass=data.getvalue("password")
 
 
 if user_name=="root" and user_pass=="redhat":
-  print "<META HTTP-EQUIV='refresh' content='0; url=/menu.html'/>"
+  print "<META HTTP-EQUIV='refresh' content='0; url=/index.html'/>"
 
 else:
   

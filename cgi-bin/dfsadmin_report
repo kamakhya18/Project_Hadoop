@@ -9,9 +9,6 @@ data=cgi.FieldStorage()
 
 ip_namenode=data.getvalue('ip_namenode')
 
-if not ip_namenode:
- ip_namenode="192.168.122.61"
-
 data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
 #img_tag = '<img src="data:image/jpg;base64,%s">' % data_uri
 
@@ -47,9 +44,9 @@ print "<img src='data:image/jpg;base64,%s' style='width:100px; height:100px; mar
 print "</a>"
 print "<br>"
 print "<br>"
-print "<form action='../cgi-bin/hdfs_options1.py' method='GET'>"
+print "<form action='../cgi-bin/hdfs_options1.py' method='POST'>"
 print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
-print "<input type='submit' value='Continue'>"
+print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
 print "</form>"
 
 print "</br>"

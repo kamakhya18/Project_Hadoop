@@ -24,10 +24,15 @@ print "<ul>"
 print "<li style='margin:0px; display: block; color: white;text-align: center;padding: 14px 16px;text-decoration: none; width:1000px;  postion:fixed; background-color:royalblue;'>Automatic Setup of HDFS Cluster</li>"
 print "</ul>"
 
-ip_details=[]
-commands.getoutput("sudo arp-scan -I virbr0 192.168.122.0/24 | grep 192 | awk '{print $1}' > /tmp/ip_list")
+docker = '03eae6414dce\n96493dd26e5d\ne1a3ce8ef2ef\n23dfcf3fb24b\ne31be6c27520'
+#docker = commands.getoutput("docker ps -a -q")
+docker = docker.split("\n")
 
-commands.getoutput("sudo echo '192.168.122.1\n'>> /tmp/ip_list")
+for d in docker:
+ os.system("docker start "+d)
+
+ip_details=[]
+commands.getoutput("sudo arp-scan -I docker0 172.17.0.0/24 | grep 172 | awk '{print $1}' > /tmp/ip_list")
 
 commands.getoutput("sudo cp /tmp/ip_list /tmp/inventory")
 

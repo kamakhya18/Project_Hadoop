@@ -8,18 +8,33 @@ print ""
 
 data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
 
+data_uri4 = open('continue.jpg', 'rb').read().encode('base64').replace('\n', '')
+
 print "<h1 style='margin:0px; color:yellow;background-color:#D2691E; text-align:center; font-family:verdana; height:90px; width:1500px; background-image:url(data:image/jpg;base64,%s);background-size:120px;background-repeat: no-repeat;padding-left: 40px;' title='Hadoop'> " % data_uri 
 print "Hadoop"
 print "</h1>"
 
-print "<ul>"
-print "<li style='margin:0px; display: block; color: white;text-align: center;padding: 14px 16px;text-decoration: none; width:1000px; background-color:black'>HDFS Cluster Status</li>"
+print "<ul style='list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;'>"
+print "<li style='float: left;'><a href='../index.html' style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;'>HOME</a></li>"
+
+print "<li style='float: left;'><a  style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../hdfs_cluster.html'>HDFS</a></li>"
+
+print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../mr_cluster.html'>Map Reduce</a></li>"
+
+print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../cgi-bin/hive_cluster.py'>HIVE</a></li>"
+
+print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../login.html'>LOG IN</a></li>"
+
+print "<li style='float:right'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../about.html'>ABOUT</a></li>"
+
 print "</ul>"
 
 data=cgi.FieldStorage()
 
 ip_namenode = data.getvalue('namenode')
 namenode_directory = data.getvalue('namenode_directory')
+
+print '<div style="background-color:#FFDAB9; width:100%; height: 150%;">'
 
 if not namenode_directory:
  namenode_directory="hadoopnamenode"
@@ -67,9 +82,7 @@ f.close()
 
 commands.getoutput("sudo ansible-playbook -i /tmp/inventory all.yml")
 
-print "<pre>"
-print commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
-print "</pre>"
+commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
 
 #hdfs-site.xml
 f=open("/tmp/hdfs-site.xml","w")
@@ -78,10 +91,35 @@ f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"tex
 
 f.close()
 
-print "<pre>"
-print commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
-print "</pre>"
+commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
 
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<font size='6' style='margin-left:500px;'>"
 print "HDFS Cluster setup successful"
+print "</font>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<form action='../cgi-bin/hdfs_options1.py' method='POST'>"
+print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "</form>"
+print "<META HTTP-EQUIV='refresh' content='0; url=hdfs_options1.py'/>"
 
-print "<META HTTP-EQUIV='refresh' content='0; url=dfsadmin_report'/>"
+print "</div>"

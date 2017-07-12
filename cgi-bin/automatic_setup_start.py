@@ -88,8 +88,6 @@ f.write("# .bashrc\n\n# User specific aliases and functions\n\nalias rm='rm -i'\
 
 f.close()
 
-print commands.getoutput("sudo cat /tmp/inventory")
-
 commands.getoutput("sudo ansible-playbook -i /tmp/inventory all.yml")
 
 commands.getoutput("sudo ansible-playbook -i /tmp/inventory namenode.yml")
@@ -105,4 +103,9 @@ commands.getoutput("sudo ansible-playbook -i /tmp/inventory datanode.yml")
 
 print "HDFS Cluster setup successful"
 
-print "<META HTTP-EQUIV='refresh' content='0; url=dfsadmin_report'/>"
+print "<form action='../cgi-bin/dfsadmin_report' method='POST'>"
+print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+print "<input type='submit' value='Continue'>"
+print "</form>"
+
+print "<META HTTP-EQUIV='refresh' content='0; url=hdfs_options1.py'/>"

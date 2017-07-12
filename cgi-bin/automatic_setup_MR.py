@@ -27,8 +27,6 @@ print "</ul>"
 ip_details=[]
 commands.getoutput("sudo arp-scan -I virbr0 192.168.122.0/24 | grep 192 | awk '{print $1}' > /tmp/ip_list")
 
-commands.getoutput("sudo echo '192.168.122.1\n'>> /tmp/ip_list")
-
 commands.getoutput("sudo cp /tmp/ip_list /tmp/inventory")
 
 commands.getoutput("sudo chmod 777 /tmp/inventory")
@@ -44,7 +42,7 @@ if len(ip_list)>0:
  print "<br>"
  print "<font size='6' style='margin:0px; display: block; color: white;margin-left:700px;padding: 14px 16px;text-decoration: none; width:1500px;'><i>Scanned IPs</i></font>"
  
- print "<form action='automatic_setup_start_MR.py' method='POST'>"
+ print "<form action='automatic_setup_start_MR.py' method='GET'>"
  
  for temp in ip_list:
   
@@ -59,6 +57,11 @@ if len(ip_list)>0:
   os_ram = str(os_ram)
   
   ip_details.append((temp,cpu_core[1].strip(),os_ram))
+  jps = commands.getoutput("sudo sshpass -p 'redhat' ssh root@"+temp+" jps")
+  
+  if "NameNode" in jps:
+   ip_namenode = temp
+  #print ip_namenode
  
  print "<pre>"
  print "<font style='color:white;' size='5'>"
@@ -76,6 +79,8 @@ if len(ip_list)>0:
  print "<br>"
  print "<br>"
  print "<br>"
+ 
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
  
  print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
  

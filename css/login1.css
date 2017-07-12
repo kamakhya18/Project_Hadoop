@@ -1,0 +1,77 @@
+*
+{
+margin:0px;
+}
+
+#footer {
+   color:white;
+   left:0px;
+   bottom:0px;
+   height:200px;
+   width:100%;
+   background:grey;
+}
+input[type=text] {
+    border: 1px solid blue;
+    border-bottom: 2px solid steelblue;
+    background-color: white;
+    color: blue;
+    background-image:url("uname.jpg");
+    background-size:45px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+    margin-left: 750px;
+}
+
+input[type=password] {
+    border: 1px solid blue;
+    border-bottom: 2px solid steelblue;
+    background-color: white;
+    color: blue;
+    background-image:url("pwd.png");
+    background-size:45px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+    margin-left: 750px;
+}
+input[type=text]:hover {
+    border: 1px solid blue;
+    width:550px;
+    height:80px;
+    border-bottom: 2px solid steelblue;
+    background-color: white;
+    color: blue;
+    background-image:url("uname.jpg");
+    background-size:75px;
+    background-repeat: no-repeat;
+    padding-left: 80px;
+}
+
+input[type=password]:hover{
+    border: 1px solid blue;
+    width:550px;
+    height:80px;
+    border-bottom: 2px solid steelblue;
+    background-color: white;
+    color: blue;
+    background-image:url("pwd.png");
+    background-size:75px;
+    background-repeat: no-repeat;
+    padding-left: 80px;
+}
+
+input[type=submit] {
+    background-color: white;
+    color: blue;
+    width: 150px;
+    left: 50%;
+    margin-left: 880px;
+}
+
+input[type=submit]:hover {
+    background-color: white;
+    color: blue;
+    width: 600px;
+    height: 70px;
+    margin-left:800px;
+}
