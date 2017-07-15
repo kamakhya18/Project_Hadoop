@@ -9,7 +9,46 @@ data=cgi.FieldStorage()
 ip_namenode= data.getvalue('ip_namenode')
 option = data.getvalue('hdfs_option')
 
-data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
+print "<html>"
+print "<head>"
+print "<title>Hadoop</title>"
+print "<link rel='stylesheet' type='text/css' href='login.css/>"
+print "</head>"
+print "<body>"
+data_uri5 = open('../html/css/person.jpg', 'rb').read().encode('base64').replace('\n', '')
+data_uri6 = open('../html/css/contact.png', 'rb').read().encode('base64').replace('\n', '')
+
+print "<div style='background-color:black;'>"
+print "<ul>"
+print "<li style='float:left;'><font size='6'><b style='color:white;'><i>Hadoop</i></b></font></li>"
+print "<li><a href='contact.html'><img src='data:image/png;base64,%s' width='25px' style='background-color:white;'></a></li>" %data_uri6
+print "<div class='dropdown' >"
+print "<button class='dropbtn'><img src='data:image/jpg;base64,%s' width='30px'></button>" %data_uri5
+print "<div class='dropdown-content'>"
+print "<a href='login.html'>Log In</a>"
+print "<a href='#'>Register</a>"
+print "</div>"
+print "</div>"
+print "<li><a href='../index.html'>About</a></li>"
+print "<li><a href='../index.html'>Home</a></li>"
+print "<li><a href='../cgi-bin/hive_cluster.py'>Hive</a></li>"
+print "<li><a href='../cgi-bin/mr_options1.py'>MR</a></li>"
+print "<li><a href='../cgi-bin/hdfs_options1.py'>HDFS</a></li>"
+print "<div class='dropdown' >"
+print "<button class='dropbtn'>Cluster</button>"
+print "<div class='dropdown-content'>"
+print "<a href='../hdfs.html'>HDFS</a>"
+print "<a href='../mr.html'>MR</a>"
+print "<a href='../hive.html'>Hive</a>"
+print "</div>"
+print "</div>"
+print "</ul>"
+print "</div>"
+
+
+
+data_uri = open('../html/hadooplogo.png', 'rb').read().encode('base64').replace('\n', '')
+#print '<img src="data:image/jpg;base64,%s">' % data_uri
 
 data_uri1 = open('background1.jpg', 'rb').read().encode('base64').replace('\n', '')
 
@@ -19,24 +58,10 @@ data_uri3 = open('directory.jpg', 'rb').read().encode('base64').replace('\n', ''
 
 data_uri4 = open('continue.jpg', 'rb').read().encode('base64').replace('\n', '')
 
-print "<h1 style='margin:0px; color:yellow;background-color:#D2691E; text-align:center; font-family:verdana; height:50px; width:2000px; background-image:url(data:image/jpg;base64,%s);background-size:170px;background-repeat: no-repeat; postion:fixed; padding:40px 40px;' title='Hadoop'> " % data_uri 
-print "Hadoop"
-print "</h1>"
 
-print "<ul style='list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;'>"
-print "<li style='float: left;'><a href='../index.html' style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;'>HOME</a></li>"
-
-print "<li style='float: left;'><a  style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../hdfs_cluster.html'>HDFS</a></li>"
-
-print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../mr_cluster.html'>Map Reduce</a></li>"
-
-print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../hive_cluster.py'>HIVE</a></li>"
-
-print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../login.html'>LOG IN</a></li>"
-
-print "<li style='float:right'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../about.html'>ABOUT</a></li>"
-
-print "</ul>"
+print "<div>"
+print '<img width="2150vw" src="data:image/jpg;base64,%s">' % data_uri
+print "</div>"
 
 print '<div style="background-image:url(data:image/jpg;base64,%s); background-size:3000px; background-color:skyblue;">' % data_uri1
 
@@ -60,6 +85,37 @@ if option == "mkdir":
 elif option == "put":
  print "<form action='../cgi-bin/hdfs_upload.py' method='POST'>"
  
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter file name' name='file_src' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter destination' name='file_dest' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='text' placeholder='Enter replication factor' name='block_rep' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='text' placeholder='Enter block size' name='block_size' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+
+elif option == "putf":
+ print "<form action='../cgi-bin/hdfs_putf.py' method='POST'>"
  print "<br>"
  print "<br>"
  print "<br>"
@@ -127,6 +183,8 @@ elif option == "ls":
  print "<br>"
  print "<br>"
  print "</form>"
+
+
 
 elif option == "text":
  print "<form action='../cgi-bin/hdfs_cat.py' method='POST'>"
@@ -519,6 +577,72 @@ elif option == "commission_nodes":
  print "<br>"
  print "</form>"
 
+elif option == "defsize":
+ print "<form action='../cgi-bin/hdfs_defsize.py' method='POST'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter block size' name='block_size' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+elif option == "defrep":
+ print "<form action='../cgi-bin/hdfs_defrep.py' method='POST'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter replication factor' name='rep_factor' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+elif option == "chport":
+ print "<form action='../cgi-bin/hdfs_chport.py' method='POST'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter port no' name='port_no' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
 elif option == "fsck":
  print "<form action='../cgi-bin/hdfs_fsck.py' method='POST'>"
  
@@ -527,6 +651,44 @@ elif option == "fsck":
  print "<br>"
  print "<input type='text' placeholder='Enter directory name' name='dir_name' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
  
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+elif option == "chhbt":
+ print "<form action='../cgi-bin/hdfs_chhbt.py' method='POST'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ temp = commands.getoutput("sudo hadoop dfsadmin -report | grep Name | awk '{print $2}'")
+ 
+ temp = temp.split("\n")
+ i = 0
+ while i < len(temp):
+  temp[i]=temp[i][0:temp[i].index(":")]
+  i = i + 1
+ print "<select name='ip_datanode' style='border:none;margin-left:800px;color:blue;text-align:center;padding-left:20px;border-bottom:2px solid white;'>"
+ for node in temp:
+  print node
+  print "<option>"+node+"</option>"
+  print "<br>"
+ print "</select>"
+ 
+ print "<br>"
+ print "<br>"
+ 
+ print "<input type='text' placeholder='Enter heartbeat interval' name='heartbeat' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
  print "<br>"
  print "<br>"
  print "<br>"
@@ -559,9 +721,119 @@ elif option == "permissions":
  print "<br>"
  print "</form>"
 
-elif option == "report":
- print "<form action='../cgi-bin/hdfs_report.py' method='POST'>"
+elif option == "trash":
+ print "<form action='../cgi-bin/hdfs_trash.py' method='POST'>"
  
+ print "<input type='radio' name='state' value='Enable'>Enable"
+ 
+ print "<input type='radio' name='state' value='Disable'>Disable"
+ 
+ print "<input type='text' placeholder='Enter trash interval' name='trash' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ 
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+
+elif option == "report":
+ print "<pre>"
+ print "<font size='5' style='color:white;'>"
+ output = commands.getoutput("sudo hadoop dfsadmin -report ")
+ 
+ print output
+ print "</font>"
+ print "</pre>" 
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+
+elif option == "metasave":
+ print "<pre>"
+ print "<font size='5' style='color:white;'>"
+ commands.getoutput("sudo sshpass -p 'redhat' ssh -o 'StrictHostKeyChecking no' root@"+ip_namenode+" hadoop dfsadmin -metasave namenode_metadata ")
+ output = commands.getoutput("sudo sshpass -p 'redhat' ssh -o 'StrictHostKeyChecking no' root@"+ip_namenode+" cat /var/log/hadoop/root/namenode_metadata")
+ print output
+ print "</font>"
+ print "</pre>" 
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+
+
+elif option == "empty_trash":
+ print "<pre>"
+ print "<font size='5' style='color:white;'>"
+ output = commands.getoutput("sudo hadoop fs -expunge ")
+ if not output:
+  print "Trash empty or disabled"
+ else:
+  print output
+ print "</font>"
+ print "</pre>" 
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+
+
+elif option == "get_quota":
+ print "<form action='../cgi-bin/hdfs_getquota.py' method='POST'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter directory name' name='dir_name' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>" 
+ print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "</form>"
+
+elif option == "refresh_nodes":
+ 
+ print "<pre>"
+ output = commands.getoutput("sudo hadoop dfsadmin -refreshNodes ") 
+ 
+ if not output:
+  print commands.getoutput("sudo hadoop dfsadmin -report")
+ else:
+  print output
+ print "</pre>"
+ 
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+
+elif option=="hive":
+ print "<form action='../cgi-bin/hive_cluster.py' method='POST'>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
  print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
  
  print "<br>"
@@ -574,21 +846,32 @@ elif option == "report":
  print "<br>"
  print "</form>"
 
-elif option == "refresh_nodes":
- print "<form action='../cgi-bin/hdfs_refreshNodes.py' method='POST'>"
+elif option == "ha":
+ print "<form action='../cgi-bin/demo.py' method='POST'>"
+ print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter IP ' name='ip_ann' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
+ print "<br>"
+ print "<br>"
+ print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"
  
  print "<br>"
  print "<br>"
  print "<br>"
+ 
  print "<input type='submit' value='Continue' style='background-color:white; color:blue; margin-left:950px; background-image:url(data:image/jpg;base64,%s); background-size:45px; background-repeat: no-repeat; padding-left: 40px;'>" %data_uri4
  print "<br>"
  print "<br>"
  print "<br>"
  print "</form>"
 
-elif option=="hive":
- print "<form action='../cgi-bin/hive_cluster.py' method='POST'>"
+elif option == "snn":
+ print "<form action='../cgi-bin/hdfs_snn.py' method='POST'>"
  print "<br>"
+ print "<br>"
+ print "<br>"
+ print "<input type='text' placeholder='Enter IP of secondary namenode' name='ip_snn' style='border: none; border-bottom: 2px solid white; color: blue; text-align:center; margin-left:800px; padding-left: 20px;'>"
  print "<br>"
  print "<br>"
  print "<input type='hidden' name='ip_namenode' value="+ip_namenode+">"

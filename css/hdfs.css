@@ -132,6 +132,7 @@ li a:hover {
  border: 5px solid white;
  color:white;
  font-size:30;
+ background-color:black;
 }
 .a3:hover{
  display:block;
@@ -141,4 +142,59 @@ li a:hover {
  border: 5px solid white;
  color:steelblue;
  font-size:40;
+}
+
+.dropbtn1 {
+    background-color: black;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    width:600px;
+    border: 5px solid white;
+    cursor: pointer;
+}
+
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    float:right;
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content1 a {
+ display:block;
+ text-decoration:none;
+ padding-left:50px;
+ width:600px;
+ border: none;
+ color:white;
+ font-size:25;
+ background-color:black;
+}
+
+.dropdown-content1 a:hover {
+ background-color: black;
+ display:block;
+ text-decoration:none;
+ padding-left:50px;
+ width:600px;
+ border: 5px solid white;
+ color:steelblue;
+ font-size:40;
+}
+
+.dropdown1:hover .dropdown-content1 {
+    display: block;
+}
+
+.dropdown1:hover .dropbtn1 {
+    background-color: black;
 }

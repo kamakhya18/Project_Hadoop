@@ -5,7 +5,47 @@ import os,time,string,sys,commands,getpass,cgi
 print "Content-type:text/html"
 print ""
 
-data_uri = open('hadoop.jpg', 'rb').read().encode('base64').replace('\n', '')
+
+print "<html>"
+print "<head>"
+print "<title>Hadoop</title>"
+print "<link rel='stylesheet' type='text/css' href='login.css/>"
+print "</head>"
+print "<body>"
+data_uri5 = open('../html/css/person.jpg', 'rb').read().encode('base64').replace('\n', '')
+data_uri6 = open('../html/css/contact.png', 'rb').read().encode('base64').replace('\n', '')
+
+print "<div style='background-color:black;'>"
+print "<ul>"
+print "<li style='float:left;'><font size='6'><b style='color:white;'><i>Hadoop</i></b></font></li>"
+print "<li><a href='contact.html'><img src='data:image/png;base64,%s' width='25px' style='background-color:white;'></a></li>" %data_uri6
+print "<div class='dropdown' >"
+print "<button class='dropbtn'><img src='data:image/jpg;base64,%s' width='30px'></button>" %data_uri5
+print "<div class='dropdown-content'>"
+print "<a href='login.html'>Log In</a>"
+print "<a href='#'>Register</a>"
+print "</div>"
+print "</div>"
+print "<li><a href='../index.html'>About</a></li>"
+print "<li><a href='../index.html'>Home</a></li>"
+print "<li><a href='../cgi-bin/hive_cluster.py'>Hive</a></li>"
+print "<li><a href='../cgi-bin/mr_options1.py'>MR</a></li>"
+print "<li><a href='../cgi-bin/hdfs_options1.py'>HDFS</a></li>"
+print "<div class='dropdown' >"
+print "<button class='dropbtn'>Cluster</button>"
+print "<div class='dropdown-content'>"
+print "<a href='../hdfs.html'>HDFS</a>"
+print "<a href='../mr.html'>MR</a>"
+print "<a href='../hive.html'>Hive</a>"
+print "</div>"
+print "</div>"
+print "</ul>"
+print "</div>"
+
+
+
+data_uri = open('../html/hadooplogo.png', 'rb').read().encode('base64').replace('\n', '')
+#print '<img src="data:image/jpg;base64,%s">' % data_uri
 
 data_uri1 = open('background1.jpg', 'rb').read().encode('base64').replace('\n', '')
 
@@ -15,22 +55,10 @@ data_uri3 = open('directory.jpg', 'rb').read().encode('base64').replace('\n', ''
 
 data_uri4 = open('continue.jpg', 'rb').read().encode('base64').replace('\n', '')
 
-print "<h1 style='margin:0px; color:yellow;background-color:#D2691E; text-align:center; font-family:verdana; height:50px; width:2000px; background-image:url(data:image/jpg;base64,%s);background-size:170px;background-repeat: no-repeat; postion:fixed; padding:40px 40px;' title='Hadoop'> " % data_uri 
-print "Hadoop"
-print "</h1>"
 
-print "<ul style='list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;'>"
-print "<li style='float: left;'><a href='../index.html' style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;'>HOME</a></li>"
-
-print "<li style='float: left;'><a  style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../hdfs_cluster.html'>HDFS</a></li>"
-
-print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../mr_cluster.html'>Map Reduce</a></li>"
-
-print "<li style='float: left;'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../hive_cluster.py'>HIVE</a></li>"
-
-print "<li style='float:right'><a style='display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;' href='../about.html'>ABOUT</a></li>"
-
-print "</ul>"
+print "<div>"
+print '<img width="2150vw" src="data:image/jpg;base64,%s">' % data_uri
+print "</div>"
 
 print '<div style="background-image:url(data:image/jpg;base64,%s); background-size:3000px; background-color:skyblue;">' % data_uri1
 
@@ -50,8 +78,15 @@ else:
  print x
 print "</font>"
 print "</pre>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<a style='color:white;text-decoration:none;font-size:30;float:right;' href='../cgi-bin/hdfs_options1.py'>"
+print "Back"
+print "</a>"
+print "<br>"
+print "<br>"
+print "<br>"
+print "<br>"
 print "</div>"
-print "<br>"
-print "<br>"
-print "<br>"
-print "<br>"
