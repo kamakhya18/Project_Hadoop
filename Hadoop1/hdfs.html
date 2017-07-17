@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>HDFS</title>
+<link rel="stylesheet" type="text/css" href="../css/css1/hdfs.css">
+</head>
+<body>
+<ul>
+<li style='float:left;'><font size='6'><b style='color:white;'><i>Hadoop</i></b></font></li>
+<li><a href='contact.html'><img src='../css/css1/contact.png' width='25px' style='background-color:white;'></a></li>
+<div class="dropdown" >
+  <button class="dropbtn"><img src='../css/css1/person.jpg' width='30px'></button>
+  <div class="dropdown-content">
+    <a href="login.html">Log In</a>
+    <a href="#">Register</a>
+  </div>
+</div>
+<li><a href="index.html">About</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="../../cgi-bin/cgi-bin1/hive_cluster.py">Hive</a></li>
+<li><a href="../../cgi-bin/cgi-bin1/mr_options1.py">MR</a></li>
+<li><a href="../../cgi-bin/cgi-bin1/hdfs_options1.py">HDFS</a></li>
+<div class="dropdown" >
+  <button class="dropbtn">Cluster</button>
+  <div class="dropdown-content">
+    <a href="hdfs.html">HDFS</a>
+    <a href="mr.html">MR</a>
+    <a href="hive.html">Hive</a>
+  </div>
+</div>
+</ul>
+<img src='../css/css1/hdfs2.jpg' style='float:left;' width='100%'>
+<br>
+<br>
+<div style='background-color:white;color:white;width:200px;'>
+Apache Hadoop
+</div>
+<div style='background-color:black;'>
+<font size='7' style='margin:800px;color:white'>About HDFS</font>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div>
+<p>
+<img src='../css/css1/hdfs.jpg' style='float:left;padding-left:50px;' width='30%' height='600px' hspace="100">
+<font size='4'>
+<p style='margin-left:700px;'><b>The Hadoop Distributed File System (HDFS) is the primary storage system used by Hadoop applications.
+</b>
+</p>
+<br>
+<p style='margin-left:700px;'>
+HDFS is a distributed file system that provides high-performance access to data across Hadoop clusters. Like other Hadoop-related technologies, HDFS has become a key tool for managing pools of big data and supporting big data analytics applications.
+Because HDFS typically is deployed on low-cost commodity hardware, server failures are common. The file system is designed to be highly fault-tolerant, however, by facilitating the rapid transfer of data between compute nodes and enabling Hadoop systems to continue running if a node fails. That decreases the risk of catastrophic failure, even in the event that numerous nodes fail.
+</p>
+<br>
+
+<p style='margin-left:700px;'>When HDFS takes in data, it breaks the information down into separate pieces and distributes them to different nodes in a cluster, allowing for parallel processing. The file system also copies each piece of data multiple times and distributes the copies to individual nodes, placing at least one copy on a different server rack than the others. As a result, the data on nodes that crash can be found elsewhere within a cluster, which allows processing to continue while the failure is resolved.
+</p>
+<p style='margin-left:700px;'>
+HDFS is built to support applications with large data sets, including individual files that reach into the terabytes. It uses a master/slave architecture, with each cluster consisting of a single NameNode that manages file system operations and supporting DataNodes that manage data storage on individual compute nodes.
+</p>
+</font>
+</div>
+
+<br>
+<br>
+<br>
+<div class='d2'>
+<font size='7'>HDFS Cluster Setup</font>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="dropdown1" style='float:left;padding-left:100px;'>
+  <button class="dropbtn1">Manual Setup</button>
+  <div class="dropdown-content1">
+    <br>
+    <a href="../../cgi-bin/cgi-bin1/manual_setup.py">Scan IPs</a>
+    <br>
+    <a href="../../cgi-bin/cgi-bin1/manual_setup_all.py">Enter IPs</a>
+    <br>
+  </div>
+</div>
+
+<a class='a3' href='../../cgi-bin/cgi-bin1/automatic_setup.py' style='float:right;'>Automatic Setup</a>
+</div>
+<br>
+<br>
+<br>
+<div style='background-color:black;'>
+<font style='text-align:center;margin-left:700px;color:white' size='7'>Components of Hadoop</font>
+</div>
+<div style='background-color:lightblue;'>
+<br>
+<br>
+<br>
+<br>
+<font size='4' style='color:white'><i>
+The Apache Hadoop project actively supports multiple projects intended to extend Hadoop’s capabilities and make it easier to use. There are several top-level projects to create development tools as well as for managing Hadoop data flow and processing. Many commercial third-party solutions build on the technologies developed within the Apache Hadoop ecosystem.
+</i></font>
+<br>
+<br>
+<br>
+<div class='d1'><img src='../css/css1/hadoophdfs.jpg' width='400px' height='200px'><br>The Hadoop Distributed File System (HDFS) is the primary storage system used by Hadoop applications. HDFS is a distributed file system that provides high-performance access to data across Hadoop clusters.<br><a href='hdfs.html' style='text-align:center;text-decoration:none;'>Read More </a></div>
+
+<div class='d1'><img src='../css/css1/mr1.png' width='400px' height='200px'><br>A MapReduce job usually splits the input data-set into independent chunks which are processed by the map tasks in a completely parallel manner.<br><a href='mr.html' style='text-align:center;text-decoration:none;'>Read More</a></div>
+
+<div class='d1'><img src='../css/css1/hivelogo.png' width='200px' height='200px'><br>Apache Hive is a powerful data warehousing application built on top of Hadoop; it enables you to access your data using Hive QL, a language that is similar to SQL. <br><a href='hive.html' style='text-align:center;text-decoration:none;'>Read More</a></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id ='footer'>
+Apache Hadoop and associated open source project names are trademarks of the Apache Software Foundation.
+<br>
+<br>
+<a href=#><img src='../css/css1/fb.png' width='40px' height='40px' style='margin-left:800px;'></a>
+<a href=#><img src='../css/css1/linkedin.png' width='40px' height='40px'></a>
+<a href=#><img src='../css/css1/twitter.png' width='40px' height='40px'></a>
+<a href=#><img src='../css/css1/msg.png' width='40px' height='40px'></a>
+</div>
+</body>
+</html>
